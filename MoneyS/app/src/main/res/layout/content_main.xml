@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_marginTop="80dp"
+        android:id="@+id/incomeText"
+        style="@style/textForMainActivity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="Income: " />
+
+    <TextView
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/incomeText"
+        android:id="@+id/totalIncome"
+        style="@style/BalanceForMainActivity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="" />
+
+    <TextView
+        android:layout_marginTop="15dp"
+        android:layout_below="@+id/totalIncome"
+        android:id="@+id/expenseText"
+        style="@style/textForMainActivity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="Expense: " />
+
+    <TextView
+        style="@style/BalanceForMainActivity"
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/expenseText"
+        android:id="@+id/totalExpense"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="" />
+
+
+    <TextView
+        android:layout_marginTop="45dp"
+        android:layout_below="@+id/totalExpense"
+        android:id="@+id/totalText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:textSize="24sp"
+        android:layout_gravity="center_horizontal|center"
+        android:text="Balance: " />
+
+    <TextView
+        android:layout_below="@+id/totalText"
+        android:id="@+id/totalSum"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:textSize="36sp"
+        android:textColor="@android:color/black"
+        android:layout_gravity="center_horizontal|center"
+        android:text="" />
+
+    <Button
+        android:layout_marginTop="48dp"
+        android:layout_marginLeft="48dp"
+        android:layout_below="@+id/totalSum"
+        android:id="@+id/changeActivity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_gravity="center_horizontal|center"
+        android:onClick="writeExpense"
+        android:textSize="20sp"
+        android:text="-"
+        />
+
+    <Button
+        android:layout_marginTop="48dp"
+        android:layout_marginRight="48dp"
+        android:layout_below="@+id/totalSum"
+        android:id="@+id/changeActivity1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentRight="true"
+        android:layout_gravity="center_horizontal|center"
+        android:onClick="writeIncome"
+        android:textSize="20sp"
+        android:text="+"
+        />
+
+</RelativeLayout>

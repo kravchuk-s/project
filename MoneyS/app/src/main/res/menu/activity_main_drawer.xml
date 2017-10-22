@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/main_activity"
+            android:icon="@drawable/ic_smartphone_black_12dp"
+            android:title="Main screen" />
+        <item
+            android:id="@+id/show_data"
+            android:icon="@drawable/ic_format_list_bulleted_black_12dp"
+            android:title="Show Data" />
+        <item
+            android:id="@+id/add_category"
+            android:icon="@drawable/ic_add_circle_outline_black_12dp"
+            android:title="Add category" />
+        <item
+            android:id="@+id/delete_category"
+            android:icon="@drawable/ic_remove_circle_outline_black_12dp"
+            android:title="Delete category" />
+        <item
+            android:id="@+id/clear_data"
+            android:icon="@drawable/ic_storage_black_24dp"
+            android:title="Clear Data" />
+    </group>
+
+    <item android:title="Data">
+        <menu>
+
+        </menu>
+    </item>
+
+</menu>
