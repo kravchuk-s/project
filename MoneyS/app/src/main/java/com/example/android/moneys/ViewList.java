@@ -4,6 +4,7 @@ import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -22,6 +23,11 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.android.moneys.helpers.AppBaseActivity;
+import com.example.android.moneys.helpers.DBHelper;
+import com.example.android.moneys.helpers.FourColumnListAdapter;
+import com.example.android.moneys.helpers.MoneyData;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -29,8 +35,8 @@ import java.util.Calendar;
 import java.util.Collections;
 import java.util.Date;
 
-import static com.example.android.moneys.DBHelper.TABLE_NAME_EXPENSE;
-import static com.example.android.moneys.DBHelper.TABLE_NAME_INCOME;
+import static com.example.android.moneys.helpers.DBHelper.TABLE_NAME_EXPENSE;
+import static com.example.android.moneys.helpers.DBHelper.TABLE_NAME_INCOME;
 
 public class ViewList extends AppBaseActivity implements View.OnClickListener, AdapterView.OnItemSelectedListener {
     final Context context = this;
@@ -82,7 +88,6 @@ public class ViewList extends AppBaseActivity implements View.OnClickListener, A
         setMoneyDataList();
         listViewCreation();
 
-
     }
 
     @Override
@@ -112,23 +117,25 @@ public class ViewList extends AppBaseActivity implements View.OnClickListener, A
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.context_menu, menu);
     }
+
     @Override
     public boolean onContextItemSelected(MenuItem item) {
         AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
         int position = info.position;
         switch (item.getItemId()) {
             case R.id.update:
-                Log.d(LOG_TAG,"UPDATE");
+                Log.d(LOG_TAG, "UPDATE");
                 updateRow(position);
                 return true;
             case R.id.delete:
-                Log.d(LOG_TAG,"DELETE");
+                Log.d(LOG_TAG, "DELETE");
                 deleteRow(position);
                 return true;
             default:
                 return super.onContextItemSelected(item);
         }
     }
+
     public void listViewCreation() {
         Log.d(LOG_TAG, "inside list view creation");
         if (moneyDataList.size() > 0) {
@@ -395,14 +402,31 @@ public class ViewList extends AppBaseActivity implements View.OnClickListener, A
             }
         }
     }
-    public void updateRow(final int position){
+
+    public void updateRow(final int position) {
         AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
         alertDialog.setCancelable(false);
         alertDialog.setTitle("Update Row");
         alertDialog.setMessage("Are you sure you want to update this row?");
         alertDialog.setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int which) {
-                updating(position);
+
+                Log.d(LOG_TAG, " ibside updating()" + moneyDataList.toString());
+                SQLiteDatabase db = dbHelper.getWritableDatabase();
+
+                String id = moneyDataList.get(position).getId();
+                String sum = moneyDataList.get(position).getSum();
+                String category = moneyDataList.get(position).getCategory();
+                String date = moneyDataList.get(position).getDate();
+                String note = moneyDataList.get(position).getNote();
+                Log.d(LOG_TAG, "before intent in update row");
+                Intent intent = new Intent(getApplicationContext(), FinanceOperation.class);
+                intent.putExtra("id", id );
+                intent.putExtra("sum", sum);
+                intent.putExtra("category", category);
+                intent.putExtra("date", date);
+                intent.putExtra("note", note);
+                startActivity(intent);
 
             }
         });
@@ -410,20 +434,88 @@ public class ViewList extends AppBaseActivity implements View.OnClickListener, A
         alertDialog.show();
     }
 
-    public void updating( int position){
-        Log.d(LOG_TAG, " ibside updating()" + moneyDataList.toString());
-
-        SQLiteDatabase db = dbHelper.getWritableDatabase();
-        String id = moneyDataList.get(position).getId();
-
-      
-//        db.execSQL("delete from finances where id = '" + id + "'");
-//        moneyDataList.remove(position);
-//        adapter.notifyDataSetChanged();
-        Toast.makeText(ViewList.this, "Row updated", Toast.LENGTH_LONG).show();
-    }
-
-
-
+//    public void updating( int position){
+//        Log.d(LOG_TAG, " ibside updating()" + moneyDataList.toString());
+//
+//        SQLiteDatabase db = dbHelper.getWritableDatabase();
+//        String id = moneyDataList.get(position).getId();
+//
+//        String sum;
+//        String category;
+//        String date;
+//        String note;
+//
+//        TextView txSumUp = (TextView) findViewById(R.id.txSumUp);
+//        txDateUp = (TextView) findViewById(R.id.txDateUp);
+//        EditText etNoteUp = (EditText) findViewById(R.id.etNoteUp);
+//        Spinner spCategoryUp = (Spinner) findViewById(R.id.spCategoryUp);
+//        Log.d(LOG_TAG, "Dialog 1");
+//        Dialog dialog = new Dialog(ViewList.this);
+//        Log.d(LOG_TAG, "Dialog 2");
+//        dialog.setTitle("Update");
+//        Log.d(LOG_TAG, "Dialog 3");
+//        dialog.setContentView(R.layout.dialog_updating);
+//        Log.d(LOG_TAG, "Dialog 4");
+//        Button btUpdate =(Button)dialog.findViewById(R.id.btUpdate);
+//        btUpdate.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Toast.makeText(ViewList.this, "Clicked UPDATE", Toast.LENGTH_LONG).show();
+//            }
+//        });
+//        Log.d(LOG_TAG, "Dialog 5");
+//        txDateUp.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Log.d(LOG_TAG, "Dialog 5");
+//                setDate(v,3);
+//                Log.d(LOG_TAG, "Dialog 6");
+//                Toast.makeText(ViewList.this, "Clicked DATE", Toast.LENGTH_LONG).show();
+//            }
+//        });
+//
+//        dialog.show();
+//        dateUp();
+//
+////        db.execSQL("delete from finances where id = '" + id + "'");
+////        moneyDataList.remove(position);
+////        adapter.notifyDataSetChanged();
+//        Toast.makeText(ViewList.this, "Row updated", Toast.LENGTH_LONG).show();
+//    }
+//
+//    public void dateUp() {
+//        Log.d(LOG_TAG, "dateUp");
+//        txDateUp = (TextView) findViewById(R.id.txDateUp);
+//
+//        calendarUp = Calendar.getInstance();
+//        Log.d(LOG_TAG, "dateUp 2");
+//        yearUp = calendarUp.get(Calendar.YEAR);
+//        Log.d(LOG_TAG, "dateUp 3");
+//        monthUp = calendarUp.get(Calendar.MONTH);
+//        dayUp = calendarUp.get(Calendar.DAY_OF_MONTH);
+//        showDateUp(yearUp, monthUp + 1, dayUp);
+//        Log.d(LOG_TAG, "dateUp 4");
+//    }
+//
+//    private void showDateUp(int year, int month, int day) {
+//        Log.d(LOG_TAG, "dateUp 5");
+//        txDateUp.setText(new StringBuilder().append(day).append(".")
+//                .append(month).append(".").append(year));
+//        Log.d(LOG_TAG, "dateUp 5");
+//    }
+//
+//    private DatePickerDialog.OnDateSetListener myDateListenerUp = new
+//            DatePickerDialog.OnDateSetListener() {
+//                @Override
+//                public void onDateSet(DatePicker arg0,
+//                                      int arg1, int arg2, int arg3) {
+//                    // TODO Auto-generated method stub
+//                    // arg1 = year
+//                    // arg2 = month
+//                    // arg3 = day
+//                    Log.d(LOG_TAG, "dateUp 6");
+//                    showDateUp(arg1, arg2 + 1, arg3);
+//                }
+//            };
 }
 

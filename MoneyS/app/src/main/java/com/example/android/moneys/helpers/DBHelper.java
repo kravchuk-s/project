@@ -1,4 +1,4 @@
-package com.example.android.moneys;
+package com.example.android.moneys.helpers;
 
 import android.content.ContentValues;
 import android.content.Context;

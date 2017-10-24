@@ -11,12 +11,15 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.example.android.moneys.helpers.AppBaseActivity;
+import com.example.android.moneys.helpers.DBHelper;
+
 import java.util.ArrayList;
 
-import static com.example.android.moneys.DBHelper.COL_EX;
-import static com.example.android.moneys.DBHelper.COL_IN;
-import static com.example.android.moneys.DBHelper.TABLE_NAME_EXPENSE;
-import static com.example.android.moneys.DBHelper.TABLE_NAME_INCOME;
+import static com.example.android.moneys.helpers.DBHelper.COL_EX;
+import static com.example.android.moneys.helpers.DBHelper.COL_IN;
+import static com.example.android.moneys.helpers.DBHelper.TABLE_NAME_EXPENSE;
+import static com.example.android.moneys.helpers.DBHelper.TABLE_NAME_INCOME;
 
 public class AddCategory extends AppBaseActivity implements View.OnClickListener {
     final String LOG_TAG = "myLogs";

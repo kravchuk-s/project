@@ -1,4 +1,4 @@
-package com.example.android.moneys;
+package com.example.android.moneys.helpers;
 
 /**
  * Created by stas on 19.10.2017.
@@ -24,7 +24,13 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.Toast;
 
-import static com.example.android.moneys.DBHelper.TABLE_NAME;
+import com.example.android.moneys.AddCategory;
+import com.example.android.moneys.DeleteCategory;
+import com.example.android.moneys.MainActivity;
+import com.example.android.moneys.R;
+import com.example.android.moneys.ViewList;
+
+import static com.example.android.moneys.helpers.DBHelper.TABLE_NAME;
 
 public abstract class AppBaseActivity extends AppCompatActivity implements MenuItem.OnMenuItemClickListener {
     private FrameLayout view_stub; //This is the framelayout to keep your content view

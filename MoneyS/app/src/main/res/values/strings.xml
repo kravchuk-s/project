@@ -6,10 +6,4 @@
 
     <string name="action_settings">Settings</string>
 
-    <string-array name="categories">
-        <item>Food</item>
-        <item>Clothes</item>
-        <item>Fun</item>
-    </string-array>
-
 </resources>

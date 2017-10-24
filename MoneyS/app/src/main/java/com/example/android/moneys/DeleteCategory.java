@@ -12,10 +12,13 @@ import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.example.android.moneys.helpers.AppBaseActivity;
+import com.example.android.moneys.helpers.DBHelper;
+
 import java.util.ArrayList;
 
-import static com.example.android.moneys.DBHelper.TABLE_NAME_EXPENSE;
-import static com.example.android.moneys.DBHelper.TABLE_NAME_INCOME;
+import static com.example.android.moneys.helpers.DBHelper.TABLE_NAME_EXPENSE;
+import static com.example.android.moneys.helpers.DBHelper.TABLE_NAME_INCOME;
 
 public class DeleteCategory extends AppBaseActivity implements View.OnClickListener, AdapterView.OnItemSelectedListener {
     final String LOG_TAG = "myLogs";

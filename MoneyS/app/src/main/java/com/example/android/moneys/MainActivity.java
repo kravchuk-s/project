@@ -8,10 +8,13 @@ import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
+import com.example.android.moneys.helpers.AppBaseActivity;
+import com.example.android.moneys.helpers.DBHelper;
+
 import java.text.NumberFormat;
 
-import static com.example.android.moneys.DBHelper.COL2;
-import static com.example.android.moneys.DBHelper.TABLE_NAME;
+import static com.example.android.moneys.helpers.DBHelper.COL2;
+import static com.example.android.moneys.helpers.DBHelper.TABLE_NAME;
 
 
 public class MainActivity extends AppBaseActivity {
