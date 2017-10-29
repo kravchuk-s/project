@@ -90,8 +90,6 @@
             android:text="from "
             android:textSize="16sp" />
 
-
-
         <TextView
             android:id="@+id/txDate_1"
             android:layout_width="wrap_content"
@@ -101,7 +99,8 @@
             android:layout_toRightOf="@+id/txFrom"
             android:clickable="true"
             android:text="10.10.10"
-            android:textSize="16sp" />
+            android:textSize="16sp"
+            android:textColor="@android:color/black"/>
         <TextView
             android:id="@+id/txTo"
             android:layout_width="wrap_content"
@@ -122,7 +121,8 @@
             android:layout_toRightOf="@+id/txTo"
             android:clickable="true"
             android:text="11.11.11"
-            android:textSize="16sp" />
+            android:textSize="16sp"
+            android:textColor="@android:color/black"/>
 
         <Button
             android:id="@+id/btShowByFilters"
@@ -135,7 +135,16 @@
             android:text="SHOW" />
     </RelativeLayout>
 
+    <ImageButton
+        android:layout_marginTop="15dp"
+        android:id="@+id/btShowHide"
+        android:layout_width="match_parent"
+        android:layout_height="15dp"
+        android:background="@android:color/transparent"
+        android:src="@drawable/ic_arrow_drop_up_black_12dp"/>
+
     <View
+        android:layout_marginTop="15dp"
         android:layout_width="300dp"
         android:layout_height="3dp"
         android:layout_gravity="center"

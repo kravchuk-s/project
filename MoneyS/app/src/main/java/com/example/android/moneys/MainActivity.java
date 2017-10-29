@@ -1,9 +1,14 @@
 package com.example.android.moneys;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.RequiresApi;
+import android.support.v4.app.ActivityCompat;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
@@ -13,6 +18,7 @@ import com.example.android.moneys.helpers.DBHelper;
 
 import java.text.NumberFormat;
 
+import static android.content.ContentValues.TAG;
 import static com.example.android.moneys.helpers.DBHelper.COL2;
 import static com.example.android.moneys.helpers.DBHelper.TABLE_NAME;
 
@@ -28,6 +34,7 @@ public class MainActivity extends AppBaseActivity {
     double expenseSum;
 
 
+    @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,6 +43,20 @@ public class MainActivity extends AppBaseActivity {
         dbHelper = new DBHelper(this);
 
         showCurrentMoney();
+        if(Integer.valueOf(Build.VERSION.SDK) >= 23)
+        requestPerm();
+    }
+    @RequiresApi(api = Build.VERSION_CODES.M)
+    public boolean requestPerm(){
+        if (checkSelfPermission(android.Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                == PackageManager.PERMISSION_GRANTED)  {
+            Log.v(TAG,"Permission is granted");
+            return true;
+        } else {
+            Log.v(TAG,"Permission is revoked");
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
+            return false;
+        }
     }
 
     public void deleteCategoryActivity(){

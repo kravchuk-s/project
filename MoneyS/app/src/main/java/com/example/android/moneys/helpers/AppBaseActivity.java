@@ -8,7 +8,9 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.database.sqlite.SQLiteDatabase;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.RequiresApi;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -33,6 +35,7 @@ import com.example.android.moneys.ViewList;
 import static com.example.android.moneys.helpers.DBHelper.TABLE_NAME;
 
 public abstract class AppBaseActivity extends AppCompatActivity implements MenuItem.OnMenuItemClickListener {
+
     private FrameLayout view_stub; //This is the framelayout to keep your content view
     private NavigationView navigation_view; // The new navigation view from Android Design Library. Can inflate menu resources. Easy
     private DrawerLayout mDrawerLayout;
@@ -41,6 +44,7 @@ public abstract class AppBaseActivity extends AppCompatActivity implements MenuI
     private DBHelper dbHelper;
     final String LOG_TAG = "myLogs";
     AlertDialog.Builder builder;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -53,12 +57,12 @@ public abstract class AppBaseActivity extends AppCompatActivity implements MenuI
         mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, 0, 0);
         mDrawerLayout.setDrawerListener(mDrawerToggle);
 
-       getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         dbHelper = new DBHelper(this);
 
         drawerMenu = navigation_view.getMenu();
-        for(int i = 0; i < drawerMenu.size(); i++) {
+        for (int i = 0; i < drawerMenu.size(); i++) {
             drawerMenu.getItem(i).setOnMenuItemClickListener(this);
         }
     }
@@ -119,6 +123,7 @@ public abstract class AppBaseActivity extends AppCompatActivity implements MenuI
         return super.onOptionsItemSelected(item);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     public boolean onMenuItemClick(MenuItem item) {
         int id = item.getItemId();
@@ -127,25 +132,28 @@ public abstract class AppBaseActivity extends AppCompatActivity implements MenuI
             showData();
         } else if (id == R.id.clear_data) {
             clearDataActivity();
-        }
-        else if (id == R.id.add_category) {
+        } else if (id == R.id.add_category) {
             addCategoryActivity();
-        }
-        else if (id == R.id.delete_category) {
+        } else if (id == R.id.delete_category) {
             deleteCategoryActivity();
-        }
-        else if (id == R.id.main_activity) {
+        } else if (id == R.id.main_activity) {
             mainActivity();
+        }
+        else if (id == R.id.export_data) {
+            ExportDatabaseCSVTask exportDatabaseCSVTask = new ExportDatabaseCSVTask(this, this);
+            exportDatabaseCSVTask.onPreExecute();
         }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
-    public void deleteCategoryActivity(){
+
+    public void deleteCategoryActivity() {
         Intent intent = new Intent(this, DeleteCategory.class);
         startActivity(intent);
     }
-    public void addCategoryActivity(){
+
+    public void addCategoryActivity() {
         Intent intent = new Intent(this, AddCategory.class);
         startActivity(intent);
     }
@@ -154,12 +162,14 @@ public abstract class AppBaseActivity extends AppCompatActivity implements MenuI
         Intent intent = new Intent(this, ViewList.class);
         startActivity(intent);
     }
-    public void mainActivity(){
+
+    public void mainActivity() {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
+
     public void clearDataActivity() {
-            builder = new AlertDialog.Builder(this);
+        builder = new AlertDialog.Builder(this);
         builder.setTitle("Clear data")
                 .setMessage("Are you sure you want to clear all data?")
                 .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {

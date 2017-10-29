@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <group android:checkableBehavior="single">
+    <group  android:id="@+id/grp1" android:checkableBehavior="single">
         <item
             android:id="@+id/main_activity"
             android:icon="@drawable/ic_smartphone_black_12dp"
@@ -18,16 +18,18 @@
             android:id="@+id/delete_category"
             android:icon="@drawable/ic_remove_circle_outline_black_12dp"
             android:title="Delete category" />
-        <item
-            android:id="@+id/clear_data"
-            android:icon="@drawable/ic_storage_black_24dp"
-            android:title="Clear Data" />
+
     </group>
 
-    <item android:title="Data">
-        <menu>
-
-        </menu>
-    </item>
+    <group  android:id="@+id/grp2" android:checkableBehavior="single">
+        <item
+            android:id="@+id/export_data"
+            android:icon="@drawable/ic_file_upload_black_12dp"
+            android:title="Export Data" />
+        <item
+                android:id="@+id/clear_data"
+                android:icon="@drawable/ic_storage_black_24dp"
+                android:title="Clear Data" />
+    </group>
 
 </menu>

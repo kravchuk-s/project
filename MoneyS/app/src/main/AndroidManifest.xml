@@ -24,5 +24,5 @@
         <activity android:name="com.example.android.moneys.AddCategory" />
         <activity android:name="com.example.android.moneys.DeleteCategory"></activity>
     </application>
-
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 </manifest>

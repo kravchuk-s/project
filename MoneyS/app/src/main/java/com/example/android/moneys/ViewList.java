@@ -2,7 +2,6 @@ package com.example.android.moneys;
 
 import android.app.DatePickerDialog;
 import android.app.Dialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
@@ -18,6 +17,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -39,15 +39,17 @@ import static com.example.android.moneys.helpers.DBHelper.TABLE_NAME_EXPENSE;
 import static com.example.android.moneys.helpers.DBHelper.TABLE_NAME_INCOME;
 
 public class ViewList extends AppBaseActivity implements View.OnClickListener, AdapterView.OnItemSelectedListener {
-    final Context context = this;
+
     DBHelper dbHelper;
     ListView listView;
     ArrayList<MoneyData> moneyDataList;
     MoneyData moneyData;
     final String LOG_TAG = "myLogs";
     FourColumnListAdapter adapter;
-    int positionL;
+    View mViewGroup;
+    private boolean viewGroupIsVisible = true;
 
+    ImageButton btShowHide;
     Spinner spChooseFrom;
     Spinner spChooseCategory;
     ArrayList<String> listOne;
@@ -88,6 +90,8 @@ public class ViewList extends AppBaseActivity implements View.OnClickListener, A
         setMoneyDataList();
         listViewCreation();
 
+        btShowHide = (ImageButton) findViewById(R.id.btShowHide);
+        btShowHide.setOnClickListener(this);
     }
 
     @Override
@@ -105,6 +109,18 @@ public class ViewList extends AppBaseActivity implements View.OnClickListener, A
 //                Toast.makeText(ViewList.this, "Show by filters", Toast.LENGTH_LONG).show();
                 showByFilters();
                 break;
+            case R.id.btShowHide:
+                 mViewGroup = findViewById(R.id.rl_1);
+
+                if (viewGroupIsVisible) {
+                    mViewGroup.setVisibility(View.GONE);
+                    btShowHide.setImageResource(R.drawable.ic_arrow_drop_down_black_24dp);
+                } else {
+                    mViewGroup.setVisibility(View.VISIBLE);
+                    btShowHide.setImageResource(R.drawable.ic_arrow_drop_up_black_12dp);
+                }
+
+                viewGroupIsVisible = !viewGroupIsVisible;
             default:
                 break;
         }
@@ -433,89 +449,5 @@ public class ViewList extends AppBaseActivity implements View.OnClickListener, A
         alertDialog.setNegativeButton(android.R.string.cancel, null);
         alertDialog.show();
     }
-
-//    public void updating( int position){
-//        Log.d(LOG_TAG, " ibside updating()" + moneyDataList.toString());
-//
-//        SQLiteDatabase db = dbHelper.getWritableDatabase();
-//        String id = moneyDataList.get(position).getId();
-//
-//        String sum;
-//        String category;
-//        String date;
-//        String note;
-//
-//        TextView txSumUp = (TextView) findViewById(R.id.txSumUp);
-//        txDateUp = (TextView) findViewById(R.id.txDateUp);
-//        EditText etNoteUp = (EditText) findViewById(R.id.etNoteUp);
-//        Spinner spCategoryUp = (Spinner) findViewById(R.id.spCategoryUp);
-//        Log.d(LOG_TAG, "Dialog 1");
-//        Dialog dialog = new Dialog(ViewList.this);
-//        Log.d(LOG_TAG, "Dialog 2");
-//        dialog.setTitle("Update");
-//        Log.d(LOG_TAG, "Dialog 3");
-//        dialog.setContentView(R.layout.dialog_updating);
-//        Log.d(LOG_TAG, "Dialog 4");
-//        Button btUpdate =(Button)dialog.findViewById(R.id.btUpdate);
-//        btUpdate.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Toast.makeText(ViewList.this, "Clicked UPDATE", Toast.LENGTH_LONG).show();
-//            }
-//        });
-//        Log.d(LOG_TAG, "Dialog 5");
-//        txDateUp.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Log.d(LOG_TAG, "Dialog 5");
-//                setDate(v,3);
-//                Log.d(LOG_TAG, "Dialog 6");
-//                Toast.makeText(ViewList.this, "Clicked DATE", Toast.LENGTH_LONG).show();
-//            }
-//        });
-//
-//        dialog.show();
-//        dateUp();
-//
-////        db.execSQL("delete from finances where id = '" + id + "'");
-////        moneyDataList.remove(position);
-////        adapter.notifyDataSetChanged();
-//        Toast.makeText(ViewList.this, "Row updated", Toast.LENGTH_LONG).show();
-//    }
-//
-//    public void dateUp() {
-//        Log.d(LOG_TAG, "dateUp");
-//        txDateUp = (TextView) findViewById(R.id.txDateUp);
-//
-//        calendarUp = Calendar.getInstance();
-//        Log.d(LOG_TAG, "dateUp 2");
-//        yearUp = calendarUp.get(Calendar.YEAR);
-//        Log.d(LOG_TAG, "dateUp 3");
-//        monthUp = calendarUp.get(Calendar.MONTH);
-//        dayUp = calendarUp.get(Calendar.DAY_OF_MONTH);
-//        showDateUp(yearUp, monthUp + 1, dayUp);
-//        Log.d(LOG_TAG, "dateUp 4");
-//    }
-//
-//    private void showDateUp(int year, int month, int day) {
-//        Log.d(LOG_TAG, "dateUp 5");
-//        txDateUp.setText(new StringBuilder().append(day).append(".")
-//                .append(month).append(".").append(year));
-//        Log.d(LOG_TAG, "dateUp 5");
-//    }
-//
-//    private DatePickerDialog.OnDateSetListener myDateListenerUp = new
-//            DatePickerDialog.OnDateSetListener() {
-//                @Override
-//                public void onDateSet(DatePicker arg0,
-//                                      int arg1, int arg2, int arg3) {
-//                    // TODO Auto-generated method stub
-//                    // arg1 = year
-//                    // arg2 = month
-//                    // arg3 = day
-//                    Log.d(LOG_TAG, "dateUp 6");
-//                    showDateUp(arg1, arg2 + 1, arg3);
-//                }
-//            };
 }
 
