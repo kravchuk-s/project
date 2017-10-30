@@ -46,7 +46,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
-            android:text="Sum: "
+            android:text="@string/sum_expense_layout"
             android:textSize="24sp">
         </TextView>
 
@@ -75,7 +75,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
-            android:text="Category: "
+            android:text="@string/category_expense_layout"
             android:textSize="24sp">
 
         </TextView>
@@ -104,7 +104,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:hint="Note"
+            android:hint="@string/note_hint_expense_layout"
             android:textSize="24sp"
             android:inputType="textCapSentences">
         </EditText>
@@ -113,7 +113,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="write"
-            android:text="Add">
+            android:text="@string/add_button_expense_layout">
 
         </Button>
     </LinearLayout>

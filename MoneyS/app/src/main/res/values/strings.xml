@@ -4,6 +4,30 @@
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
-    <string name="action_settings">Settings</string>
+    <string name="action_settings" translatable="false">Settings</string>
+
+
+        <string name="income_main_activity_layout">Income: </string>
+        <string name="expense_main_activity_layout">Expense: </string>
+        <string name="balance_main_activity_layout">Balance: </string>
+
+    <string name="sum_expense_layout">Sum: </string>
+    <string name="category_expense_layout">Category: </string>
+    <string name="note_hint_expense_layout">Note</string>
+    <string name="add_button_expense_layout">Add</string>
+
+
+    <string name="category_name_activity_add_category">Category name</string>
+    <string name="add_to_activity_add_category">Add to: </string>
+
+    <string name="delete_from_delete_category">Delete from: </string>
+    <string name="choose_category_to_delete_category">Choose category to delete: </string>
+    <string name="delete_button_to_delete_category">Delete</string>
+
+
+
+
+
+
 
 </resources>

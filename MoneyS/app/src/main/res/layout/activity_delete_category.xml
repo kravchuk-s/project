@@ -14,7 +14,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginLeft="5dp"
         android:layout_marginTop="105dp"
-        android:text="Delete from: "
+        android:text="@string/delete_from_delete_category"
         android:textSize="20sp">
 
     </TextView>
@@ -26,7 +26,7 @@
         android:layout_below="@+id/txChooseFrom"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="15dp"
-        android:layout_weight="1" />
+         />
 
     <TextView
         android:id="@+id/txToDelte"
@@ -36,7 +36,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginLeft="5dp"
         android:layout_marginTop="15dp"
-        android:text="Choose category to delete: "
+        android:text="@string/choose_category_to_delete_category"
         android:textSize="20sp">
 
     </TextView>
@@ -48,7 +48,7 @@
         android:layout_below="@+id/txToDelte"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="15dp"
-        android:layout_weight="1" />
+         />
 
     <Button
         android:id="@+id/btDeleteCategory"
@@ -58,7 +58,7 @@
         android:layout_alignParentRight="true"
         android:layout_below="@+id/spCategoryChooseToDelete"
         android:layout_marginTop="15dp"
-        android:text="Delete">
+        android:text="@string/delete_button_to_delete_category">
 
     </Button>
 
