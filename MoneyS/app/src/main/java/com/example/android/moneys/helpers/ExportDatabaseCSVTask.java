@@ -14,6 +14,7 @@ import android.support.annotation.RequiresApi;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.example.android.moneys.R;
 import com.opencsv.CSVWriter;
 
 import java.io.File;
@@ -61,7 +62,6 @@ public class ExportDatabaseCSVTask extends AsyncTask<String, Void, Boolean> {
         File file = new File(exportDir, "csvdata.csv");
 
             try {
-
                 if (file.createNewFile()) {
                     Log.d(EXPORT_LOG, "Creating new file");
                 } else {
@@ -85,15 +85,13 @@ public class ExportDatabaseCSVTask extends AsyncTask<String, Void, Boolean> {
                 sendIntent.setType("application/csv");
                 Uri U = Uri.fromFile(file);
                 sendIntent.putExtra(Intent.EXTRA_STREAM, U);
-                context.startActivity(Intent.createChooser(sendIntent, "Send Mail"));
+                context.startActivity(Intent.createChooser(sendIntent, context.getString(R.string.send_export_database_csv)));
 
                 return true;
             } catch (SQLException sqlEx) {
-
                 Log.e("MainActivity", sqlEx.getMessage(), sqlEx);
                 return false;
             } catch (IOException e) {
-
                 Log.e("MainActivity", e.getMessage(), e);
                 return false;
             }
@@ -103,9 +101,9 @@ public class ExportDatabaseCSVTask extends AsyncTask<String, Void, Boolean> {
     protected void onPostExecute(final Boolean success) {
 
         if (success) {
-            Toast.makeText(context, "Export succeed", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, R.string.export_succeed_export_database_csv, Toast.LENGTH_SHORT).show();
         } else {
-            Toast.makeText(context, "Export failed", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, R.string.export_failed_export_database_csv, Toast.LENGTH_SHORT).show();
         }
     }
 

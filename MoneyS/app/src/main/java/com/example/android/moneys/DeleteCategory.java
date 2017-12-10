@@ -124,9 +124,9 @@ public class DeleteCategory extends AppBaseActivity implements View.OnClickListe
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         boolean isDeleted = db.delete(tableName, "category=" + "'" + catToDel + "'", null) > 0;
         if (isDeleted == true){
-            Toast.makeText(DeleteCategory.this, "Category deleted", Toast.LENGTH_LONG).show();
+            Toast.makeText(DeleteCategory.this, R.string.category_deleted_delete_category, Toast.LENGTH_LONG).show();
         } else {
-            Toast.makeText(DeleteCategory.this, "Something went wrong", Toast.LENGTH_LONG).show();
+            Toast.makeText(DeleteCategory.this, R.string.went_wrong_delete_category, Toast.LENGTH_LONG).show();
         }
 
         Intent intent = new Intent(this, MainActivity.class);

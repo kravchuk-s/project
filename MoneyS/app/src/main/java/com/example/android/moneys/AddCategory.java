@@ -94,7 +94,7 @@ public class AddCategory extends AppBaseActivity implements View.OnClickListener
             db.execSQL("insert into " + TABLE_NAME_INCOME + "(" + COL_IN + " ) values ('"+ catName + "')");
         }
 
-        Toast.makeText(AddCategory.this, "Category added", Toast.LENGTH_LONG).show();
+        Toast.makeText(AddCategory.this, getString(R.string.category_added_add_category), Toast.LENGTH_LONG).show();
 
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);

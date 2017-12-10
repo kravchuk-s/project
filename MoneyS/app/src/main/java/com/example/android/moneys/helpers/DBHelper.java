@@ -65,7 +65,7 @@ public class DBHelper extends SQLiteOpenHelper {
     public void defaultValues(SQLiteDatabase db){
             db.execSQL("insert into " + TABLE_NAME_EXPENSE + "(" + COL_EX + " ) values ('Food')");
             db.execSQL("insert into " + TABLE_NAME_EXPENSE + "(" + COL_EX + " ) values ('Health')");
-            db.execSQL("insert into " + TABLE_NAME_EXPENSE + "(" + COL_EX + " ) values ('Transpor')");
+            db.execSQL("insert into " + TABLE_NAME_EXPENSE + "(" + COL_EX + " ) values ('Transport')");
             db.execSQL("insert into " + TABLE_NAME_EXPENSE + "(" + COL_EX + " ) values ('Other')");
             db.execSQL("insert into " + TABLE_NAME_EXPENSE + "(" + COL_EX + " ) values ('Fun')");
 

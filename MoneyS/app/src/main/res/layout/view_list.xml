@@ -21,7 +21,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Date: "
+                    android:text="@string/date_view_list_layout"
                     android:textSize="16sp" />
                 <TextView
                     android:id="@+id/textDate"
@@ -40,7 +40,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Sum: "
+                    android:text="@string/sum_expense_layout"
                     android:textSize="16sp" />
 
                 <TextView
@@ -60,7 +60,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Category: "
+                    android:text="@string/category_expense_layout"
                     android:textSize="16sp" />
                 <TextView
                     android:id="@+id/textCategory"
@@ -79,7 +79,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Note: "
+                    android:text="@string/note_view_list_layout"
                     android:textSize="16sp" />
 
                 <TextView

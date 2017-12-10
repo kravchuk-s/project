@@ -170,15 +170,15 @@ public abstract class AppBaseActivity extends AppCompatActivity implements MenuI
 
     public void clearDataActivity() {
         builder = new AlertDialog.Builder(this);
-        builder.setTitle("Clear data")
-                .setMessage("Are you sure you want to clear all data?")
+        builder.setTitle(R.string.clear_data_app_base_activity)
+                .setMessage(R.string.are_you_sure_app_base_activity)
                 .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         SQLiteDatabase db = dbHelper.getWritableDatabase();
                         Log.d(LOG_TAG, "--- Clear expense: ---");
                         int clearCount = db.delete(TABLE_NAME, null, null);
                         Log.d(LOG_TAG, "deleted rows count = " + clearCount);
-                        Toast.makeText(AppBaseActivity.this, "Data Cleared", Toast.LENGTH_LONG).show();
+                        Toast.makeText(AppBaseActivity.this, R.string.data_cleared_app_base_activity, Toast.LENGTH_LONG).show();
                         dbHelper.close();
                         Intent intent = new Intent(AppBaseActivity.this, MainActivity.class);
                         startActivity(intent);

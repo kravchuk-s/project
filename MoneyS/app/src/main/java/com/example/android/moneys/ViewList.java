@@ -98,15 +98,12 @@ public class ViewList extends AppBaseActivity implements View.OnClickListener, A
     public void onClick(View v) {
         switch (v.getId() /*to get clicked view id**/) {
             case R.id.txDate_1:
-//                Toast.makeText(ViewList.this, "Date 1", Toast.LENGTH_LONG).show();
                 setDate(v, 1);
                 break;
             case R.id.txDate_2:
-//                Toast.makeText(ViewList.this, "Date 2", Toast.LENGTH_LONG).show();
                 setDate(v, 2);
                 break;
             case R.id.btShowByFilters:
-//                Toast.makeText(ViewList.this, "Show by filters", Toast.LENGTH_LONG).show();
                 showByFilters();
                 break;
             case R.id.btShowHide:
@@ -168,7 +165,7 @@ public class ViewList extends AppBaseActivity implements View.OnClickListener, A
         AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
         alertDialog.setCancelable(false);
         alertDialog.setTitle("Delete Row");
-        alertDialog.setMessage("Are you sure you want to delete this row?");
+        alertDialog.setMessage(R.string.delete_row_view_list);
         alertDialog.setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int which) {
                 SQLiteDatabase db = dbHelper.getWritableDatabase();
@@ -177,7 +174,7 @@ public class ViewList extends AppBaseActivity implements View.OnClickListener, A
                 db.execSQL("delete from finances where id = '" + id + "'");
                 moneyDataList.remove(position);
                 adapter.notifyDataSetChanged();
-                Toast.makeText(ViewList.this, "Row deleted", Toast.LENGTH_LONG).show();
+                Toast.makeText(ViewList.this, R.string.row_deleted_view_list, Toast.LENGTH_LONG).show();
 
             }
         });
@@ -358,7 +355,7 @@ public class ViewList extends AppBaseActivity implements View.OnClickListener, A
         int numOfRows = mData.getCount();
         Log.d(LOG_TAG, "list view + num of rows" + numOfRows);
         if (numOfRows == 0) {
-            Toast.makeText(ViewList.this, "There is no Data", Toast.LENGTH_LONG).show();
+            Toast.makeText(ViewList.this, R.string.no_data_view_list, Toast.LENGTH_LONG).show();
         } else {
             int i = 0;
             while (mData.moveToNext()) {
@@ -382,7 +379,7 @@ public class ViewList extends AppBaseActivity implements View.OnClickListener, A
         int numOfRows = mData.getCount();
         Log.d(LOG_TAG, "list view + num of rows" + numOfRows);
         if (numOfRows == 0) {
-            Toast.makeText(ViewList.this, "There is no Data", Toast.LENGTH_LONG).show();
+            Toast.makeText(ViewList.this, R.string.no_data_view_list, Toast.LENGTH_LONG).show();
         } else {
             Log.d(LOG_TAG, "iside else-if");
             int i = 0;
@@ -423,7 +420,7 @@ public class ViewList extends AppBaseActivity implements View.OnClickListener, A
         AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
         alertDialog.setCancelable(false);
         alertDialog.setTitle("Update Row");
-        alertDialog.setMessage("Are you sure you want to update this row?");
+        alertDialog.setMessage(R.string.are_you_view_list);
         alertDialog.setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int which) {
 

@@ -176,7 +176,7 @@ public class FinanceOperation extends AppBaseActivity implements View.OnClickLis
             sumUp = sumUp.substring(1);
         }
 
-        btAdd.setText("UPDATE");
+        btAdd.setText(R.string.update_finance_operation);
         etNote.setText(noteUp);
         txSum.setText(sumUp);
     }
@@ -245,13 +245,13 @@ public class FinanceOperation extends AppBaseActivity implements View.OnClickLis
                 String id = (String) extras.get("id");
                 db.execSQL("delete from finances where id = '" + id + "'");
             } else {
-                Toast.makeText(FinanceOperation.this, "Something went wrong", Toast.LENGTH_LONG).show();
+                Toast.makeText(FinanceOperation.this, R.string.went_wrong_delete_category, Toast.LENGTH_LONG).show();
             }
         } else {
             if (insertData == true) {
-                Toast.makeText(FinanceOperation.this, "Data Inserted", Toast.LENGTH_LONG).show();
+                Toast.makeText(FinanceOperation.this, R.string.data_inserted_finance_operation, Toast.LENGTH_LONG).show();
             } else {
-                Toast.makeText(FinanceOperation.this, "Something went wrong", Toast.LENGTH_LONG).show();
+                Toast.makeText(FinanceOperation.this, R.string.went_wrong_delete_category, Toast.LENGTH_LONG).show();
             }
         }
 

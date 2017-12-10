@@ -27,7 +27,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:text="Show from:"
+                    android:text="@string/show_from_viewcontent"
                     android:textSize="16sp" />
 
                 <Spinner
@@ -57,7 +57,7 @@
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_marginTop="15dp"
-                    android:text="Category:"
+                    android:text="@string/category_expense_layout"
                     android:textSize="16sp" />
 
                 <Spinner
@@ -79,7 +79,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/LL_2"
             android:layout_marginTop="15dp"
-            android:text="Date:"
+            android:text="@string/date_view_list_layout"
             android:textSize="16sp" />
 
         <TextView
@@ -87,7 +87,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/txDateFromTo"
-            android:text="from "
+            android:text="@string/from_viewcontent"
             android:textSize="16sp" />
 
         <TextView
@@ -107,7 +107,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/txFrom"
             android:layout_marginLeft="15dp"
-            android:text=" to "
+            android:text="@string/to_viewcontent"
             android:layout_marginTop="5dp"
             android:textSize="16sp" />
 
@@ -132,7 +132,7 @@
             android:layout_below="@+id/LL_2"
             android:layout_marginRight="15dp"
             android:layout_marginTop="20dp"
-            android:text="SHOW" />
+            android:text="@string/show_viewcontent" />
     </RelativeLayout>
 
     <ImageButton

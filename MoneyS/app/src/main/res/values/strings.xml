@@ -1,8 +1,8 @@
 <resources>
     <string name="app_name">MoneyS</string>
 
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="navigation_drawer_open" translatable="false">Open navigation drawer</string>
+    <string name="navigation_drawer_close" translatable="false">Close navigation drawer</string>
 
     <string name="action_settings" translatable="false">Settings</string>
 
@@ -23,6 +23,48 @@
     <string name="delete_from_delete_category">Delete from: </string>
     <string name="choose_category_to_delete_category">Choose category to delete: </string>
     <string name="delete_button_to_delete_category">Delete</string>
+
+
+    <string name="clear_data_app_base_activity">Clear data</string>
+    <string name="are_you_sure_app_base_activity">Are you sure you want to clear all data?</string>
+    <string name="data_cleared_app_base_activity">Data Cleared</string>
+
+
+    <string name="send_export_database_csv">Send</string>
+    <string name="export_succeed_export_database_csv">Export succeed</string>
+    <string name="export_failed_export_database_csv">Export failed</string>
+
+
+    <string name="category_added_add_category">Category added</string>
+
+    <string name="category_deleted_delete_category">Category deleted</string>
+    <string name="went_wrong_delete_category">Something went wrong</string>
+
+    <string name="update_finance_operation">UPDATE</string>
+    <string name="data_inserted_finance_operation">Data inserted</string>
+
+    <string name="delete_row_view_list">Are you sure you want to delete this row?</string>
+    <string name="row_deleted_view_list">Row deleted</string>
+    <string name="no_data_view_list">There is no Data</string>
+    <string name="are_you_view_list">Are you sure you want to update this row?</string>
+
+    <string name="date_view_list_layout">Date: </string>
+    <string name="note_view_list_layout">Note: </string>
+
+    <string name="show_from_viewcontent">Show from:</string>
+    <string name="from_viewcontent">from </string>
+    <string name="to_viewcontent">to </string>
+    <string name="show_viewcontent">SHOW</string>
+
+    <string name="main_screnn_menu">Main screen</string>
+    <string name="show_data_menu">Show Data</string>
+    <string name="add_category_menu">Add category</string>
+    <string name="delete_category_menu">Delete category</string>
+    <string name="export_data_menu">Export Data</string>
+    <string name="clear_data_menu">Clear Data</string>
+
+    <string name="update_context">Update</string>
+    <string name="delete_context">Delete</string>
 
 
 
